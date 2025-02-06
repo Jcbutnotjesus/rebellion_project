@@ -7,6 +7,11 @@ const Header: React.FC = () => {
       <nav className="menu">
         <ul>
           <li>
+            <a href="#all">
+              <img src="/assets/all.png" alt="all" className="menu-icon" />
+            </a>
+          </li>
+          <li>
             <a href="#people">
               <img
                 src="/assets/people.png"

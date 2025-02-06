@@ -9,6 +9,10 @@
     "build": "npm --prefix backend run build && npm --prefix frontend run build"
   },
   "devDependencies": {
+    "@types/node-cache": "^4.2.5",
     "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "node-cache": "^5.1.2"
   }
 }
