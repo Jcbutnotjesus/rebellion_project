@@ -52,5 +52,35 @@ ul {
 }
 
 li {
-  margin: 5px 0;
+  margin: 10px 0;
+  font-size: xx-large;
 }
+
+li:hover {
+  cursor: pointer;
+}
+
+.list{
+padding-top: 15vh;  
+}
+
+.app-container {
+  background: black;
+  color: yellow;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 80%;
+  padding: 20px;
+  font-size: 2rem;
+  background: black;
+  z-index: 1000;
+  text-align: center;
+  overflow: hidden;
+}
+

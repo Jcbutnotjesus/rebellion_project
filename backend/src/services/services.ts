@@ -1,6 +1,8 @@
 import axios from 'axios';
+import NodeCache from 'node-cache';
 
 const BASE_URL = 'https://swapi.dev/api/';
+const cache = new NodeCache({ stdTTL: 3600 }); // Cache for 1 hour
 
 const fetchAllPages = async (url: string): Promise<any[]> => {
     let results: any[] = [];
@@ -15,32 +17,33 @@ const fetchAllPages = async (url: string): Promise<any[]> => {
     return results;
 };
 
+const fetchWithCache = async (key: string, fetchFn: () => Promise<any>): Promise<any> => {
+    const cachedData = cache.get(key);
+    if (cachedData) {
+        return cachedData;
+    }
+    const data = await fetchFn();
+    cache.set(key, data);
+    return data;
+};
+
 export const fetchPeople = async (): Promise<any> => {
-    try {
+    return fetchWithCache('people', async () => {
         const results = await fetchAllPages(`${BASE_URL}people/`);
         return { results };
-    } catch (error) {
-        console.error('Error fetching people:', error);
-        throw error;
-    }
+    });
 };
 
 export const fetchPlanets = async (): Promise<any> => {
-    try {
+    return fetchWithCache('planets', async () => {
         const results = await fetchAllPages(`${BASE_URL}planets/`);
         return { results };
-    } catch (error) {
-        console.error('Error fetching planets:', error);
-        throw error;
-    }
+    });
 };
 
 export const fetchStarships = async (): Promise<any> => {
-    try {
+    return fetchWithCache('starships', async () => {
         const results = await fetchAllPages(`${BASE_URL}starships/`);
         return { results };
-    } catch (error) {
-        console.error('Error fetching starships:', error);
-        throw error;
-    }
+    });
 };

@@ -1,18 +1,22 @@
 import React from "react";
 import "./Header.css";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onFilterChange: (filter: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onFilterChange }) => {
   return (
     <header className="header">
       <nav className="menu">
         <ul>
           <li>
-            <a href="#all">
+            <a href="#all" onClick={() => onFilterChange("all")}>
               <img src="/assets/all.png" alt="all" className="menu-icon" />
             </a>
           </li>
           <li>
-            <a href="#people">
+            <a href="#people" onClick={() => onFilterChange("people")}>
               <img
                 src="/assets/people.png"
                 alt="People"
@@ -21,7 +25,7 @@ const Header: React.FC = () => {
             </a>
           </li>
           <li>
-            <a href="#planets">
+            <a href="#planets" onClick={() => onFilterChange("planets")}>
               <img
                 src="/assets/planets.png"
                 alt="Planets"
@@ -30,7 +34,7 @@ const Header: React.FC = () => {
             </a>
           </li>
           <li>
-            <a href="#starships">
+            <a href="#starships" onClick={() => onFilterChange("starships")}>
               <img
                 src="/assets/starship.png"
                 alt="Starships"
