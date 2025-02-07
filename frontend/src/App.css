@@ -29,39 +29,8 @@
 }
 
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 h1, h2 {
   margin: 20px 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin: 10px 0;
-  font-size: xx-large;
-}
-
-li:hover {
-  cursor: pointer;
-}
-
-.list{
-padding-top: 15vh;  
 }
 
 .app-container {

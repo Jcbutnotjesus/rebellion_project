@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 interface HeaderProps {
@@ -11,36 +12,36 @@ const Header: React.FC<HeaderProps> = ({ onFilterChange }) => {
       <nav className="menu">
         <ul>
           <li>
-            <a href="#all" onClick={() => onFilterChange("all")}>
+            <Link to="/all" onClick={() => onFilterChange("all")}>
               <img src="/assets/all.png" alt="all" className="menu-icon" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#people" onClick={() => onFilterChange("people")}>
+            <Link to="/people" onClick={() => onFilterChange("people")}>
               <img
                 src="/assets/people.png"
                 alt="People"
                 className="menu-icon"
               />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#planets" onClick={() => onFilterChange("planets")}>
+            <Link to="/planets" onClick={() => onFilterChange("planets")}>
               <img
                 src="/assets/planets.png"
                 alt="Planets"
                 className="menu-icon"
               />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#starships" onClick={() => onFilterChange("starships")}>
+            <Link to="/starships" onClick={() => onFilterChange("starships")}>
               <img
                 src="/assets/starship.png"
                 alt="Starships"
                 className="menu-icon"
               />
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
