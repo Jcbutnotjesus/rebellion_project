@@ -1,7 +1,7 @@
-import { mapEntity } from './../mapper/mapper';
+import { mapEntity } from '../mapper/mapper';
 import axios from 'axios';
 import NodeCache from 'node-cache';
-import { Film, PaginatedResponse, People, Planet, Species, Starship, Vehicle } from '../model/model';
+import { Films, PaginatedResponse, People, Planet, Species, Starship, Vehicle } from '../model/model';
 
 const BASE_URL = 'https://swapi.dev/api/';
 const cache = new NodeCache({ stdTTL: 3600 }); // Cache for 1 hour
@@ -64,7 +64,7 @@ export const fetchSpecies = async (): Promise<PaginatedResponse<Species>> => {
     });
 };
 
-export const fetchFilms = async (): Promise<PaginatedResponse<Film>> => {
+export const fetchFilms = async (): Promise<PaginatedResponse<Films>> => {
     return fetchWithCache('films', async () => {
         const results = await fetchAllPages(`${BASE_URL}films/`);
         return { results: results.map(mapEntity) };

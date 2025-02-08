@@ -74,7 +74,7 @@ export type People = {
     url: string;
   };
   
-  export type Film = {
+  export type Films = {
     title: string;
     episode_id: number;
     opening_crawl: string;
@@ -96,6 +96,7 @@ export type People = {
     classification: string;
     designation: string;
     average_height: string;
+    homeworld: string;
   }
 
   export type PaginatedResponse<T> = {

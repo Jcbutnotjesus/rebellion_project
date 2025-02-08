@@ -7,21 +7,27 @@ interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
   item: any;
+  previousUrl: string;
 }
 
-const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, item }) => {
+const Drawer: React.FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  item,
+  previousUrl,
+}) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!item) {
       onClose();
-      navigate(-1);
+      navigate(previousUrl);
     }
-  }, [item, onClose, navigate]);
+  }, [item, onClose, navigate, previousUrl]);
 
   const handleClose = () => {
     onClose();
-    navigate(-1);
+    navigate(previousUrl);
   };
 
   if (!isOpen || !item) return null;

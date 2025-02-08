@@ -18,6 +18,7 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [previousUrl, setPreviousUrl] = useState<string>("");
 
   const { data: allData, isLoading, error } = useAllData();
 
@@ -29,11 +30,12 @@ const App: React.FC = () => {
   }, [location]);
 
   useEffect(() => {
-    if (location.pathname.startsWith("/details")) {
+    if (location.pathname.startsWith("/details") && allData) {
       const [, , type, name] = location.pathname.split("/");
+      console.log("allData", allData);
       const decodedName = decodeURIComponent(name);
       const item = allData[type]?.results.find(
-        (item: any) => item.name === decodedName
+        (item: any) => item.name === decodedName || item.title === decodedName
       );
       setSelectedItem(item);
       setIsDrawerOpen(true);
@@ -49,6 +51,7 @@ const App: React.FC = () => {
   }
 
   const handleItemClick = (item: any) => {
+    setPreviousUrl(location.pathname);
     setSelectedItem(item);
     setIsDrawerOpen(true);
   };
@@ -147,9 +150,11 @@ const App: React.FC = () => {
               isOpen={isDrawerOpen}
               onClose={handleCloseDrawer}
               item={selectedItem}
+              previousUrl={previousUrl}
             />
           }
         />
+        <Route path="*" element={<div>perdu dans l'espace ...</div>} />
       </Routes>
     </div>
   );
