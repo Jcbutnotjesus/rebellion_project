@@ -5,8 +5,8 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import Header from "./components/header/Header.tsx";
-import Searchbar from "./components/searchbar/Searchbar.tsx";
+import Header from "./components/Header/Header.tsx";
+import Searchbar from "./components/Searchbar/Searchbar.tsx";
 import "./App.css";
 import { useAllData } from "./hooks/useAllData.tsx";
 import List from "./components/List/List.tsx";
@@ -25,6 +25,17 @@ const App: React.FC = () => {
     const path = location.pathname.substring(1);
     setFilter(path || "all");
   }, [location]);
+
+  useEffect(() => {
+    if (location.pathname.startsWith("/details")) {
+      const [, , type, name] = location.pathname.split("/");
+      const decodedName = decodeURIComponent(name);
+      const item = allData[type]?.results.find(
+        (item: any) => item.name === decodedName
+      );
+      setSelectedItem(item);
+    }
+  }, [location, allData]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -103,7 +114,7 @@ const App: React.FC = () => {
           }
         />
         <Route
-          path="/details"
+          path="/details/:type/:name"
           element={
             <Drawer
               isOpen={!!selectedItem}

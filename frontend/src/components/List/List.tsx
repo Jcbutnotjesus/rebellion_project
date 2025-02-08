@@ -29,7 +29,9 @@ const List: React.FC<ListProps> = ({
           <ul>
             {filterData(allData.people.results).map((person) => (
               <li key={person.name} onClick={() => onItemClick(person)}>
-                <Link to="/details">{person.name}</Link>
+                <Link to={`/details/people/${encodeURIComponent(person.name)}`}>
+                  {person.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -41,7 +43,11 @@ const List: React.FC<ListProps> = ({
           <ul>
             {filterData(allData.planets.results).map((planet) => (
               <li key={planet.name} onClick={() => onItemClick(planet)}>
-                <Link to="/details">{planet.name}</Link>
+                <Link
+                  to={`/details/planets/${encodeURIComponent(planet.name)}`}
+                >
+                  {planet.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -53,7 +59,11 @@ const List: React.FC<ListProps> = ({
           <ul>
             {filterData(allData.starships.results).map((starship) => (
               <li key={starship.name} onClick={() => onItemClick(starship)}>
-                <Link to="/details">{starship.name}</Link>
+                <Link
+                  to={`/details/starships/${encodeURIComponent(starship.name)}`}
+                >
+                  {starship.name}
+                </Link>
               </li>
             ))}
           </ul>

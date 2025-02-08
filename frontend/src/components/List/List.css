@@ -24,4 +24,11 @@ ul {
   
   .list{
   padding-top: 15vh;  
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none;
   }
