@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Drawer.css";
 import { motion, AnimatePresence } from "framer-motion";
+import "./Drawer.css";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -15,13 +15,13 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, item }) => {
   useEffect(() => {
     if (!item) {
       onClose();
-      navigate(-1); // Navigate to the previous page
+      navigate(-1);
     }
   }, [item, onClose, navigate]);
 
   const handleClose = () => {
     onClose();
-    navigate(-1); // Navigate to the previous page
+    navigate(-1);
   };
 
   if (!isOpen || !item) return null;
@@ -40,7 +40,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, item }) => {
             <button className="close-button" onClick={handleClose}>
               Close
             </button>
-            <h2>{item.name}</h2>
+            <h2>{item.name !== undefined ? item.name : item.title}</h2>
             <p>{JSON.stringify(item, null, 2)}</p>
           </div>
         </motion.div>

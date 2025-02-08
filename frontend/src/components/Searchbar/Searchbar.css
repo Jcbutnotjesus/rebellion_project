@@ -1,6 +1,6 @@
 
 .search-container {
-  position: sticky;
+  position: fixed;
   top: 100px;
   left: 50%;
   transform: translateX(-50%);
@@ -9,6 +9,7 @@
   width: 500px; 
   z-index: 1000; 
   background-color: black;
+  margin-bottom: 25px;
 }
 
 
@@ -66,8 +67,10 @@
   .search-container {
     width: 100%; /* 60% of the screen width */
     transform: translateX(0);
+    position: sticky;
   }
   .search-input{
     width: 98%;
   }
+
 }

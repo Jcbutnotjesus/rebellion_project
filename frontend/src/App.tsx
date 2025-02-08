@@ -11,11 +11,13 @@ import "./App.css";
 import { useAllData } from "./hooks/useAllData.tsx";
 import List from "./components/List/List.tsx";
 import Drawer from "./components/Drawer/Drawer.tsx";
+import Loader from "./components/Loader/Loader.tsx";
 
 const App: React.FC = () => {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const { data: allData, isLoading, error } = useAllData();
 
@@ -34,11 +36,12 @@ const App: React.FC = () => {
         (item: any) => item.name === decodedName
       );
       setSelectedItem(item);
+      setIsDrawerOpen(true);
     }
   }, [location, allData]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
@@ -47,9 +50,11 @@ const App: React.FC = () => {
 
   const handleItemClick = (item: any) => {
     setSelectedItem(item);
+    setIsDrawerOpen(true);
   };
 
   const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
     setSelectedItem(null);
   };
 
@@ -114,10 +119,32 @@ const App: React.FC = () => {
           }
         />
         <Route
+          path="/vehicles"
+          element={
+            <List
+              filter="vehicles"
+              searchQuery={searchQuery}
+              allData={allData}
+              onItemClick={handleItemClick}
+            />
+          }
+        />
+        <Route
+          path="/films"
+          element={
+            <List
+              filter="films"
+              searchQuery={searchQuery}
+              allData={allData}
+              onItemClick={handleItemClick}
+            />
+          }
+        />
+        <Route
           path="/details/:type/:name"
           element={
             <Drawer
-              isOpen={!!selectedItem}
+              isOpen={isDrawerOpen}
               onClose={handleCloseDrawer}
               item={selectedItem}
             />

@@ -17,7 +17,9 @@ const List: React.FC<ListProps> = ({
 }) => {
   const filterData = (items: any[]) =>
     items.filter((item) =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      item.name !== undefined
+        ? item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        : item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
   return (
@@ -25,7 +27,7 @@ const List: React.FC<ListProps> = ({
       <h1>Star Wars Data</h1>
       {filter === "all" || filter === "people" ? (
         <>
-          <h2>People</h2>
+          {filter === "people" && <h2>People</h2>}
           <ul>
             {filterData(allData.people.results).map((person) => (
               <li key={person.name} onClick={() => onItemClick(person)}>
@@ -39,7 +41,7 @@ const List: React.FC<ListProps> = ({
       ) : null}
       {filter === "all" || filter === "planets" ? (
         <>
-          <h2>Planets</h2>
+          {filter === "planets" && <h2>Planets</h2>}
           <ul>
             {filterData(allData.planets.results).map((planet) => (
               <li key={planet.name} onClick={() => onItemClick(planet)}>
@@ -55,7 +57,7 @@ const List: React.FC<ListProps> = ({
       ) : null}
       {filter === "all" || filter === "starships" ? (
         <>
-          <h2>Starships</h2>
+          {filter === "starships" && <h2>Starships</h2>}
           <ul>
             {filterData(allData.starships.results).map((starship) => (
               <li key={starship.name} onClick={() => onItemClick(starship)}>
@@ -63,6 +65,36 @@ const List: React.FC<ListProps> = ({
                   to={`/details/starships/${encodeURIComponent(starship.name)}`}
                 >
                   {starship.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+      {filter === "all" || filter === "vehicles" ? (
+        <>
+          {filter === "vehicles" && <h2>Vehicles</h2>}
+          <ul>
+            {filterData(allData.vehicles.results).map((vehicle) => (
+              <li key={vehicle.name} onClick={() => onItemClick(vehicle)}>
+                <Link
+                  to={`/details/vehicles/${encodeURIComponent(vehicle.name)}`}
+                >
+                  {vehicle.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+      {filter === "all" || filter === "films" ? (
+        <>
+          {filter === "films" && <h2>Films</h2>}
+          <ul>
+            {filterData(allData.films.results).map((film) => (
+              <li key={film.title} onClick={() => onItemClick(film)}>
+                <Link to={`/details/films/${encodeURIComponent(film.title)}`}>
+                  {film.title}
                 </Link>
               </li>
             ))}

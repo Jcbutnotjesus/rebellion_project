@@ -7,6 +7,7 @@
     clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
     width: 40vw;
     margin: 0 auto;
+    background: url("../../../public/assets/headerBack.jpg");
   }
   
   .menu ul {
@@ -29,12 +30,26 @@
   }
   
   .menu-icon {
-    width: 30px; /* Adjust the size as needed */
-    height: 30px; /* Adjust the size as needed */
-    filter: invert(1); /* This will make the logo the same color as the text */
+    width: 30px; 
+    height: 30px; 
+    filter: invert(1); 
 
   }
   
   .menu a:hover .menu-icon {
-    filter: invert(0.5); /* Adjust the hover effect as needed */
+    filter: invert(0.5); 
+  }
+
+  @media (max-width: 768px) {
+    .menu-icon {
+      width: 20px; 
+      height:20px; 
+    }
+    .header {
+      clip-path: none;
+      width: 100%;
+    }
+    .menu li{
+      margin: 0 5px;
+    }
   }

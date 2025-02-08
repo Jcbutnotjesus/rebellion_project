@@ -23,12 +23,11 @@ ul {
   }
   
   .list{
-  padding-top: 15vh;  
+  margin-top: 10vh;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
   }
-
   .list::-webkit-scrollbar {
     display: none;
   }
