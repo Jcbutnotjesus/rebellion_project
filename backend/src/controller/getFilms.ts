@@ -1,16 +1,15 @@
-import { Request, Response } from 'express';
-import { getFilms as fetchFilmsFromService } from '../services/getFilms';
+import { Request, ResponseToolkit } from "@hapi/hapi";
+import { getFilms as fetchFilmsFromService } from "../services/getFilms";
 
-export const getFilms = async (req: Request, res: Response): Promise<void> => {
+export const getFilms = async (request: Request, h: ResponseToolkit) => {
     try {
-        const { ids } = req.body;
+        const { ids } = request.payload as { ids: number[] };
         if (!Array.isArray(ids)) {
-            res.status(400).json({ message: 'Invalid request, ids should be an array' });
-            return;
+            return h.response({ message: 'Invalid request, ids should be an array' }).code(400);
         }
         const films = await fetchFilmsFromService(ids);
-        res.json(films);
+        return h.response(films).code(200);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching films' });
+        return h.response({ message: 'Error fetching films' }).code(500);
     }
 };

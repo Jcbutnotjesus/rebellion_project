@@ -1,16 +1,15 @@
-import { Request, Response } from 'express';
-import { getStarships as fetchStarshipFromService } from '../services/getStarships';
+import { Request, ResponseToolkit } from "@hapi/hapi";
+import { getStarships as fetchStarshipFromService } from "../services/getStarships";
 
-export const getStarship = async (req: Request, res: Response): Promise<void> => {
+export const getStarships = async (request: Request, h: ResponseToolkit) => {
     try {
-        const { ids } = req.body;
+        const { ids } = request.payload as { ids: number[] };
         if (!Array.isArray(ids)) {
-            res.status(400).json({ message: 'Invalid request, ids should be an array' });
-            return;
+            return h.response({ message: 'Invalid request, ids should be an array' }).code(400);
         }
-        const starship = await fetchStarshipFromService(ids);
-        res.json(starship);
+        const starships = await fetchStarshipFromService(ids);
+        return h.response(starships).code(200);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching Starship' });
+        return h.response({ message: 'Error fetching starships' }).code(500);
     }
 };
