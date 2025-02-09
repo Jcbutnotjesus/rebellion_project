@@ -21,7 +21,7 @@ export const registerRoutes = (server: Server) => {
     },
     options: {
         cache: {
-            expiresIn: 30 * 100000,
+            expiresIn: 30000 * 10000,
             privacy: 'private'
         }
     }

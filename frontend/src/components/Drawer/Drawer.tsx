@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Drawer.css";
+import DrawerDetails from "../DrawerDetails/DrawerDetails.tsx";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -21,14 +22,16 @@ const Drawer: React.FC<DrawerProps> = ({
   useEffect(() => {
     if (!item) {
       onClose();
-      navigate(previousUrl);
+      navigate(previousUrl.startsWith("/details") ? "/all" : previousUrl);
     }
   }, [item, onClose, navigate, previousUrl]);
 
   const handleClose = () => {
     onClose();
-    navigate(previousUrl);
+    navigate(previousUrl.startsWith("/details") ? "/all" : previousUrl);
   };
+
+  const { type } = useParams<{ type: string }>();
 
   if (!isOpen || !item) return null;
 
@@ -44,10 +47,11 @@ const Drawer: React.FC<DrawerProps> = ({
         >
           <div className="drawer-content">
             <button className="close-button" onClick={handleClose}>
-              Close
+              Fermer
             </button>
             <h2>{item.name !== undefined ? item.name : item.title}</h2>
             <p>{JSON.stringify(item, null, 2)}</p>
+            <DrawerDetails data={item} type={type || ""} />
           </div>
         </motion.div>
       )}

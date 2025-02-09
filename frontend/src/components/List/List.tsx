@@ -24,7 +24,6 @@ const List: React.FC<ListProps> = ({
 
   return (
     <div className="list">
-      <h1>Star Wars Data</h1>
       {filter === "all" || filter === "people" ? (
         <>
           {filter === "people" && <h2>People</h2>}

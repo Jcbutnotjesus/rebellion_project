@@ -31,3 +31,8 @@ ul {
   .list::-webkit-scrollbar {
     display: none;
   }
+
+  h2{
+    color: #ffe81f;
+    font-size: xx-large;
+  }

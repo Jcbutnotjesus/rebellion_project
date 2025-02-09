@@ -1,7 +1,7 @@
 
 .search-container {
   position: fixed;
-  top: 100px;
+  top: 75px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
@@ -67,7 +67,8 @@
   .search-container {
     width: 100%; /* 60% of the screen width */
     transform: translateX(0);
-    position: sticky;
+    position: fixed;
+    left:0;
   }
   .search-input{
     width: 98%;

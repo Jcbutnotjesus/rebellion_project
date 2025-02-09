@@ -5,7 +5,7 @@
     padding: 10px;
     text-align: center;
     clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
-    width: 40vw;
+    width: 60vw;
     margin: 0 auto;
     background: url("../../../public/assets/headerBack.jpg");
   }
@@ -47,7 +47,7 @@
     }
     .header {
       clip-path: none;
-      width: 100%;
+      width: 80%;
     }
     .menu li{
       margin: 0 5px;

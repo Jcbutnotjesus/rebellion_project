@@ -1,0 +1,15 @@
+.drawer-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .drawer-details img {
+    width: 70px; 
+    height: 70px; 
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg); /* Example filter */
+  }
+  
+  .drawer-details div {
+    text-align: center;
+  }
