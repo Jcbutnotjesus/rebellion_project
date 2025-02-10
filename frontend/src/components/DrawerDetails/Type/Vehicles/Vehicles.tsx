@@ -2,11 +2,11 @@ import React from "react";
 import { getIds } from "../utils.ts";
 import { useFilms } from "../../../../hooks/useFilms.ts";
 
-interface StarshipsProps {
+interface VehiclesProps {
   data: any;
 }
 
-const Starships: React.FC<StarshipsProps> = ({ data }) => {
+const Vehicles: React.FC<VehiclesProps> = ({ data }) => {
   const filmsIds = getIds(data.films);
 
   const {
@@ -19,7 +19,7 @@ const Starships: React.FC<StarshipsProps> = ({ data }) => {
     <div className="details">
       <div className="drawer-details">
         <div className="item">
-          <img src="/assets/starship.png" alt="Starship" />
+          <img src="/assets/vehicles.png" alt="Model" />
           <p>Modèle: {data.model}</p>
         </div>
         <div className="item">
@@ -52,20 +52,15 @@ const Starships: React.FC<StarshipsProps> = ({ data }) => {
           <img src="/assets/container.png" alt="Cargo" />
           <p>Capacité de cargaison: {data.cargo_capacity}</p>
         </div>
-      </div>
-      <div className="drawer-details">
         <div className="item">
           <img src="/assets/water.png" alt="Consumables" />
           <p>Consommables: {data.consumables}</p>
         </div>
+      </div>
+      <div className="drawer-details">
         <div className="item">
-          <p>Indice d'hyperpropulsion: {data.hyperdrive_rating}</p>
-        </div>
-        <div className="item">
-          <p>MGLT: {data.MGLT}</p>
-        </div>
-        <div className="item">
-          <p>Classe de vaisseau: {data.starship_class}</p>
+          <img src="/assets/pneu.png" alt="Vehicle Class" />
+          <p>Classe de véhicule: {data.vehicle_class}</p>
         </div>
 
         {data.films && data.films.length > 0 && (
@@ -86,4 +81,4 @@ const Starships: React.FC<StarshipsProps> = ({ data }) => {
   );
 };
 
-export default Starships;
+export default Vehicles;

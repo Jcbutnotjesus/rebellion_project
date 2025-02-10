@@ -4,7 +4,8 @@ import { getPlanets } from "../controller/getPlanets";
 import { getStarships } from "../controller/getStarships";
 import { getVehicles } from "../controller/getVehicles";
 import { getFilms } from "../controller/getFilms";
-impoty { getPeople } from "../controller/getPeople";
+import{ getPeople } from "../controller/getPeople";
+import { getSpecies } from "../controller/getSpecies";
 
 
 export const registerRoutes = (server: Server) => {
@@ -57,5 +58,11 @@ export const registerRoutes = (server: Server) => {
     method: "POST",
     path: "/api/people",
     handler: getPeople,
+  });
+  
+  server.route({
+    method: "POST",
+    path: "/api/species",
+    handler: getSpecies,
   });
 };

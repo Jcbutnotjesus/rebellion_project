@@ -31,4 +31,7 @@
     .item{
         margin-bottom: 25px;
     }
+    .drawer-details {
+      width: 48%; 
+  }
   }
