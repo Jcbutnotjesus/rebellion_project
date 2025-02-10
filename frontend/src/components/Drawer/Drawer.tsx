@@ -9,6 +9,7 @@ interface DrawerProps {
   onClose: () => void;
   item: any;
   previousUrl: string;
+  setPreviousUrl: (url: string) => void;
 }
 
 const Drawer: React.FC<DrawerProps> = ({
@@ -16,19 +17,21 @@ const Drawer: React.FC<DrawerProps> = ({
   onClose,
   item,
   previousUrl,
+  setPreviousUrl,
 }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!item) {
       onClose();
-      navigate(previousUrl.startsWith("/details") ? "/all" : previousUrl);
+      navigate(previousUrl);
     }
   }, [item, onClose, navigate, previousUrl]);
 
   const handleClose = () => {
     onClose();
-    navigate(previousUrl.startsWith("/details") ? "/all" : previousUrl);
+    navigate(previousUrl);
+    setPreviousUrl("/");
   };
 
   const { type } = useParams<{ type: string }>();
@@ -50,7 +53,6 @@ const Drawer: React.FC<DrawerProps> = ({
               Fermer
             </button>
             <h2>{item.name !== undefined ? item.name : item.title}</h2>
-            <p>{JSON.stringify(item, null, 2)}</p>
             <DrawerDetails data={item} type={type || ""} />
           </div>
         </motion.div>

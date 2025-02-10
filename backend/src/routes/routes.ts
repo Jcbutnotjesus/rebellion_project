@@ -1,8 +1,10 @@
 import { Server, Request, ResponseToolkit } from "@hapi/hapi";
 import { getAllData } from "../controller/fetchAllData";
-import { getFilms } from "../controller/getFilms";
-import { getPeople } from "../controller/getPeople";
+import { getPlanets } from "../controller/getPlanets";
 import { getStarships } from "../controller/getStarships";
+import { getVehicles } from "../controller/getVehicles";
+import { getFilms } from "../controller/getFilms";
+impoty { getPeople } from "../controller/getPeople";
 
 
 export const registerRoutes = (server: Server) => {
@@ -28,20 +30,32 @@ export const registerRoutes = (server: Server) => {
 });
 
   server.route({
-    method: "GET",
+    method: "POST",
+    path: "/api/planets",
+    handler: getPlanets,
+  });
+
+  server.route({
+    method: "POST",
+    path: "/api/starships",
+    handler: getStarships, 
+  });
+
+  server.route({
+    method: "POST",
+    path: "/api/vehicles",
+    handler: getVehicles,
+  });
+
+  server.route({
+    method: "POST",
     path: "/api/films",
     handler: getFilms,
   });
 
   server.route({
-    method: "GET",
+    method: "POST",
     path: "/api/people",
     handler: getPeople,
-  });
-
-  server.route({
-    method: "GET",
-    path: "/api/starships",
-    handler: getStarships,
   });
 };

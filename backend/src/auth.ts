@@ -32,7 +32,7 @@ export const registerAuthRoutes = (server: Server) => {
           return h.response({ message: "Informations Invalide" }).code(401);
         }
 
-        const token = jwt.sign({ id: username }, JWT_SECRET, { expiresIn: "4h" });
+        const token = jwt.sign({ id: username }, JWT_SECRET, { expiresIn: "24h" });
         return { token };
       },
     },

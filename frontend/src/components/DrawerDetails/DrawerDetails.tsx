@@ -1,5 +1,6 @@
 import React from "react";
 import "./DrawerDetails.css";
+import People from "./Type/People/People.tsx";
 
 interface DrawerDetailsProps {
   data: any;
@@ -10,35 +11,7 @@ const DrawerDetails: React.FC<DrawerDetailsProps> = ({ data, type }) => {
   const renderContent = () => {
     switch (type) {
       case "people":
-        return (
-          <div className="drawer-details">
-            <div>
-              <img src="/assets/height.png" alt="Height" />
-              <p> {data.height}</p>
-            </div>
-            <div>
-              <img src="/assets/mass.png" alt="Mass" />
-              <p>{data.mass}</p>
-            </div>
-            <div>
-              <img
-                src={
-                  data.gender === "male"
-                    ? "/assets/male.png"
-                    : data.gender === "female"
-                    ? "/assets/female.png"
-                    : "/assets/NA.png"
-                }
-                alt="Gender"
-              />
-              <p>{data.gender}</p>
-            </div>
-            <div>
-              <img src="/assets/planets.png" alt="Planets" />
-              <p>{data.homeworld}</p>
-            </div>
-          </div>
-        );
+        return <People data={data} />;
       case "starships":
         return (
           <div>

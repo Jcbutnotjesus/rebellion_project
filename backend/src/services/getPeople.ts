@@ -6,7 +6,6 @@ interface Person {
     name: string;
 }
 
-
 export const getPeople = async (ids: number[]): Promise<Person[]> => {
     try {
         const peoplePromises = ids.map(id => axios.get<Person>(`${SWAPI_BASE_URL}/people/${id}/`));

@@ -1,15 +1,34 @@
-.drawer-details {
+.details {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
+  }
+  
+  .drawer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%; 
+    margin-bottom: 20px;
   }
   
   .drawer-details img {
     width: 70px; 
     height: 70px; 
-    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg); /* Example filter */
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
   }
   
   .drawer-details div {
     text-align: center;
+  }
+  
+  #skin {
+    filter: none;
+  }
+
+  @media (max-width: 768px) {
+    .item{
+        margin-bottom: 25px;
+    }
   }

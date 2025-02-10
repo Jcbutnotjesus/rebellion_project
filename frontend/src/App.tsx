@@ -196,6 +196,7 @@ const App: React.FC = () => {
                   onClose={handleCloseDrawer}
                   item={selectedItem}
                   previousUrl={previousUrl}
+                  setPreviousUrl={setPreviousUrl}
                 />
               </>
             </ProtectedRoute>

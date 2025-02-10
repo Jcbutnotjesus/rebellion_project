@@ -21,7 +21,7 @@ const List: React.FC<ListProps> = ({
         ? item.name.toLowerCase().includes(searchQuery.toLowerCase())
         : item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
+  console.log("allData", allData);
   return (
     <div className="list">
       {filter === "all" || filter === "people" ? (
